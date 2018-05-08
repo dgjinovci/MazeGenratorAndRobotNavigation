@@ -6,7 +6,7 @@ var ctx;
 var open_list = []
 var closed_list = []
 var interval = null 
-function call_a_star(ctx, grid, start, end, anim_speed = 20) {
+function call_a_star(ctx, grid, start, end, anim_speed = 0) {
 
 	this.ctx = ctx;
 	GRID = grid;
@@ -17,7 +17,12 @@ function call_a_star(ctx, grid, start, end, anim_speed = 20) {
 	start.f = 0;
 	open_list.push(start);
 	this.END = end;
-	interval = setInterval(function() {a_star_algorithm(anim_speed > 0)}, anim_speed)
+	
+	if(anim_speed>0){
+		interval = setInterval(function() {a_star_algorithm(true)}, anim_speed)
+	}else{
+		a_star_algorithm(false);
+	}
 }
 
 

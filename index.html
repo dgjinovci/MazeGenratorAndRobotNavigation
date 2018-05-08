@@ -59,13 +59,11 @@ function draw(r,c, color) {
 	}
 }
 
-function prims(){
-	var speed = document.getElementById('txtPrimsAnimSpeed').value
-	call_prims_algorithm(ctx, GRID, START, speed)
+function prims() {
+	call_prims_algorithm(ctx, GRID, START, txtPrimsAnimSpeed.value)
 }
 function a_star() {
-	var speed = document.getElementById('txtAStarAnimSpeed').value
-	call_a_star(ctx, GRID, START, END, speed)
+	call_a_star(ctx, GRID, START, END, txtAStarAnimSpeed.value)
 }
 
 //Listen to your custom event

@@ -18,6 +18,7 @@ function call_a_star(ctx, grid, start, end, anim_speed = 0) {
 	open_list.push(start);
 	this.END = end;
 	
+	clearInterval(interval);
 	if(anim_speed>0){
 		interval = setInterval(function() {a_star_algorithm(true)}, anim_speed)
 	}else{

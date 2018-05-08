@@ -6,7 +6,7 @@ var item;
 var interval;
 
 
-function call_prims_algorithm(ctx, grid, start, anim_speed = 20) {
+function call_prims_algorithm(ctx, grid, start, anim_speed = 0) {
 	
 	this.ctx = ctx;
 	this.START = start;
@@ -15,8 +15,11 @@ function call_prims_algorithm(ctx, grid, start, anim_speed = 20) {
 	
 	
 	clearInterval(interval);
-	this.interval = setInterval(function() {random_prims_algorithm(anim_speed > 0)}, anim_speed);
-	
+	if(anim_speed>0){
+		interval = setInterval(function() {random_prims_algorithm(true)}, anim_speed)
+	}else{
+		random_prims_algorithm(false);
+	}
 }
 
 

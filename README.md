@@ -8,4 +8,4 @@ Finds the path with <a href="https://en.wikipedia.org/wiki/A*_search_algorithm">
 
 ### Demo 
 
-![Demo](https://github.com/dgjinovci/RobotNavigation/blob/master/demo.gif)
+![Demo](https://github.com/dgjinovci/MazeGenratorAndRobotNavigation/blob/master/demo.gif)

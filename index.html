@@ -60,10 +60,10 @@ function draw(r,c, color) {
 }
 
 function prims() {
-	call_prims_algorithm(ctx, GRID, START, txtPrimsAnimSpeed.value)
+	call_prims_algorithm(ctx, GRID, START, txtAnimSpeed.value)
 }
 function a_star() {
-	call_a_star(ctx, GRID, START, END, txtAStarAnimSpeed.value)
+	call_a_star(ctx, GRID, START, END, txtAnimSpeed.value)
 }
 
 //Listen to your custom event
@@ -79,38 +79,52 @@ console.log(e);
 
 </script>
 <style>
-canvas{ float:right}
+.d { border:1px solid #dddd; border-radius:5px; margin:5px; padding:5px; display:inline-block; vertical-align:top}
+#c{ position:absolute; right:0; top:0}
 #optionsTable input[type="number"] {width:50px}
 </style>
+
+
+
+
 <canvas id="c" width="500" height="500"></canvas>
 
 
 
-<div>
+<div class="d">
+
 <table id="optionsTable">
 <tr>
 <td>Rows</td><td><input type="number" id="txtRows" value="40"/> </td>
+<td>Cols</td><td><input type="number" id="txtCols" value="40"/> </td>
 </tr>
 <tr>
-<td>Columns</td><td><input type="number" id="txtCols" value="40"/> </td>
+<td>Cell size (px)</td><td><input type="number" id="txtSize" value="10"/></td>
 </tr>
 <tr>
-<td>Size</td><td><input type="number" id="txtSize" value="10"/> px</td>
-</tr>
-<tr>
-<td><label for="cbBorder">Border</label></td><td><input type="checkbox" id="cbBorder" /> </td>
+<td><label for="cbBorder">Show cell border</label></td><td><input type="checkbox" id="cbBorder" /> </td>
 </tr>
 </table>
-
 <br>
+
+</fieldset>
+
 <button onclick="init(); return false">Generate Maze</button>
-<br>
-<br>
-<button onclick="prims(); return false;" >Call Prim`s</button>
-animation speed<input type="number" id="txtPrimsAnimSpeed" style="width:40px" value="5" /> ms
+
+</div>
 
 <br>
-<br>
+
+<div class="d">
+
+Animation speed <input type="number" id="txtAnimSpeed" style="width:60px" value="5" />
+
+<br><br>
+
+<button onclick="prims(); return false;" >Call Prim`s</button>
+
+<br><br>
+
 <button onclick="a_star(); return false;">Call A*</button>
-animation speed<input type="number" id="txtAStarAnimSpeed" style="width:40px" value="5" /> ms
+
 </div>

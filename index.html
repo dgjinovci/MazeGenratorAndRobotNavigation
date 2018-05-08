@@ -1,0 +1,118 @@
+
+<script src="js_prims_generate_maze.js"></script>
+<script src="js_a_star_find_path.js"></script>
+
+<script>
+
+SIZE = 20;
+ROW = 40;
+COL = 40;
+
+border =false 
+GRID = []
+START = {r: 1, c: 1}
+END = {r: 1, c: 1}
+
+var canvas;
+var ctx;
+
+function init() {
+
+ROW = document.getElementById('txtRows').value 
+COL = document.getElementById('txtCols').value 
+SIZE = document.getElementById('txtSize').value 
+border = document.getElementById('cbBorder').checked
+
+canvas = document.getElementById('c')
+canvas.width = SIZE * COL
+canvas.height = SIZE * ROW 
+
+ctx = canvas.getContext("2d");
+
+GRID = []
+	
+	
+	ctx.clearRect(0, 0, canvas.width, canvas.height);
+	
+	for(var c = 0; c < COL; c++){
+		cols = []
+		for(var r = 0; r < ROW; r++) {
+			cols.push(1)
+			draw(r,c, '#c3c3c3')
+		}
+		GRID.push(cols);
+	}
+	
+	
+	draw(START.r, START.c, '#ff0000')
+	
+	
+}
+
+function draw(r,c, color) {
+	ctx.fillStyle = color
+	ctx.fillRect(c * SIZE, r * SIZE, SIZE, SIZE);
+	
+	if(border){
+		ctx.strokeStyle = "#000"
+		ctx.strokeRect(c * SIZE, r * SIZE, SIZE, SIZE);
+	}
+}
+
+function prims(){
+	var speed = document.getElementById('txtPrimsAnimSpeed').value
+	call_prims_algorithm(ctx, GRID, START, speed)
+}
+function a_star() {
+	var speed = document.getElementById('txtAStarAnimSpeed').value
+	call_a_star(ctx, GRID, START, END, speed)
+}
+
+//Listen to your custom event
+window.addEventListener('onPrimsFinished', function (e) {
+console.log(e);
+	END = e.detail
+	draw(START.r, START.c, '#ff0000')
+	draw(END.r, END.c, '#00ff00')
+	alert('Finished')
+});
+
+	
+
+</script>
+<style>
+canvas{ float:right}
+#optionsTable input[type="number"] {width:50px}
+</style>
+<canvas id="c" width="500" height="500"></canvas>
+
+
+
+<div>
+<table id="optionsTable">
+<tr>
+<td>Rows</td><td><input type="number" id="txtRows" value="40"/> </td>
+</tr>
+<tr>
+<td>Columns</td><td><input type="number" id="txtCols" value="40"/> </td>
+</tr>
+<tr>
+<td>Size</td><td><input type="number" id="txtSize" value="10"/> px</td>
+</tr>
+<tr>
+<td><label for="cbBorder">Border</label></td><td><input type="checkbox" id="cbBorder" /> </td>
+</tr>
+</table>
+
+<br>
+<button onclick="init(); return false">Generate Maze</button>
+<br>
+<br>
+<button onclick="prims(); return false;" >Call Prim`s</button>
+animation speed<input type="number" id="txtPrimsAnimSpeed" style="width:40px" value="0" /> ms
+
+<br>
+<br>
+<button onclick="a_star(); return false;">Call A*</button>
+animation speed<input type="number" id="txtAStarAnimSpeed" style="width:40px" value="0" /> ms
+</div>

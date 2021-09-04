@@ -29,8 +29,6 @@ function call_a_star(ctx, grid, start, end, anim_speed = 0) {
 
 function a_star_algorithm(breakWhile) {
 		
-		//Sorry ska while ne javascript ose uI kejt bllokohet 
-		//po duhna me bo me interval :A
 	while(open_list.length > 0) {
 		
 		var indx = 0;

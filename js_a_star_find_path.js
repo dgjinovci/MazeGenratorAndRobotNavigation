@@ -50,7 +50,7 @@ function a_star_algorithm(breakWhile) {
 		
 		if(r == END.r && c == END.c){ 
 			make_road(closed_list, current);
-			console.log('Fuckin found')
+			console.log('Found')
 			clearInterval(interval);
 			return;
 		}
